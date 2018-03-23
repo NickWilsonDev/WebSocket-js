@@ -12,7 +12,8 @@ let userList = [];
 ws.on('connection', client => {
     console.log('hey there');
     client.send('greetings');
-    userList.push
+    userList.push(client);
+    //console.log(userList);
 
     let alias = 'Anonymous';
     client.on('message', message => {
@@ -20,5 +21,8 @@ ws.on('connection', client => {
         console.log(message);
 
         // push to other clients ect
+        userList.forEach(user => {
+            user.send(message);
+        });
     });
 });
