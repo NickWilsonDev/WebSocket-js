@@ -10,8 +10,11 @@ let userList = [];
 
 // connections
 ws.on('connection', client => {
-    console.log('hey there');
-    client.send('greetings');
+    console.log('There has been a connection>>');
+    //let clientInfo = `
+    //                  IP: ${client.connection.remoteAddress}
+    //                 `;
+    //client.send('greetings' + clientInfo);
     userList.push(client);
     //console.log(userList);
 
@@ -22,7 +25,9 @@ ws.on('connection', client => {
 
         // push to other clients ect
         userList.forEach(user => {
-            user.send(message);
+            if (user != client) {
+                user.send(message);
+            }
         });
     });
 });
