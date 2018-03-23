@@ -6,9 +6,13 @@ let ws = new WebSocketServer({
     port: port
 });
 
+let userList = [];
+
+// connections
 ws.on('connection', client => {
     console.log('hey there');
     client.send('greetings');
+    userList.push
 
     let alias = 'Anonymous';
     client.on('message', message => {

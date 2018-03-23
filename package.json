@@ -1,0 +1,28 @@
+{
+  "name": "websockets",
+  "version": "1.0.0",
+  "description": "Small chat program demonstrating WebSockets.",
+  "main": "websocket-server.js",
+  "dependencies": {
+    "ws": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickWilsonDev/WebSocket-js.git"
+  },
+  "keywords": [
+    "WebSocket",
+    "Node",
+    "JavaScript"
+  ],
+  "author": "Nick Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickWilsonDev/WebSocket-js/issues"
+  },
+  "homepage": "https://github.com/NickWilsonDev/WebSocket-js#readme"
+}
