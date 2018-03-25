@@ -12,6 +12,7 @@ let userList = [];
 ws.on('connection', client => {
     console.log('There has been a connection>>');
     console.log('# of connections :: ' + userList.length);
+    let userIndex = userList.length;
     //let clientInfo = `
     //                  IP: ${client.connection.remoteAddress}
     //                 `;
@@ -30,5 +31,9 @@ ws.on('connection', client => {
                 user.send(message);
             }
         });
+    });
+    client.on('close', () => {
+        userList.splice(index, 1);
+        console.log('User left room');
     });
 });
