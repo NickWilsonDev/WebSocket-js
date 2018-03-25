@@ -11,6 +11,7 @@ let userList = [];
 // connections
 ws.on('connection', client => {
     console.log('There has been a connection>>');
+    console.log('# of connections :: ' + userList.length);
     //let clientInfo = `
     //                  IP: ${client.connection.remoteAddress}
     //                 `;
@@ -18,9 +19,9 @@ ws.on('connection', client => {
     userList.push(client);
     //console.log(userList);
 
-    let alias = 'Anonymous';
+    //let alias = 'Anonymous';
     client.on('message', message => {
-        alias = message;
+        //alias = message;
         console.log(message);
 
         // push to other clients ect

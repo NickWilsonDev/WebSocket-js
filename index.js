@@ -10,12 +10,23 @@ let receiveMsg = function (message) {
     console.log(message);
 };
 
+let sendMsg = function() {
+    let message = document.body.querySelector('.form-control').value;
+    console.log(message);
+    ws.send(message);
+    document.body.querySelector('.form-control').value = '';
+};
+
 let initiateConnection = function() {
     ws = new WebSocket('ws://localhost:3001');
     ws.addEventListener('message', receiveMsg);
+
 };
 
 document.addEventListener('DOMContentLoaded', function() {
     initiateConnection();
+    document.body.querySelector('#send-message-btn')
+                    .addEventListener('click', sendMsg);
 }, false);
+
 
