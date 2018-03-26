@@ -13,6 +13,7 @@ ws.on('connection', client => {
     console.log('There has been a connection>>');
     console.log('# of connections :: ' + userList.length);
     let userIndex = userList.length;
+    console.log(userIndex);
     //let clientInfo = `
     //                  IP: ${client.connection.remoteAddress}
     //                 `;
@@ -23,17 +24,19 @@ ws.on('connection', client => {
     //let alias = 'Anonymous';
     client.on('message', message => {
         //alias = message;
+        //carriage return was breaking my server
+        message = message.trim();
         console.log(message);
 
         // push to other clients ect
         userList.forEach(user => {
-            if (user != client) {
+            if (user != client && user.readyState === user.OPEN) {
                 user.send(message);
             }
         });
     });
-    client.on('close', () => {
-        userList.splice(index, 1);
-        console.log('User left room');
-    });
+   // client.on('close', () => {
+   //     userList.splice(index, 1);
+   //     console.log('User left room');
+   // });
 });
